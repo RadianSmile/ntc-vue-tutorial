@@ -3,8 +3,8 @@
 
   <head>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
     <meta charset="utf-8">
   </head>
@@ -23,7 +23,7 @@
             <div class="pull-right">
                 <!-- 不同的過濾器 -->
                 <span class="glyphicon glyphicon-time"     @click="control.sort   = 'time' "></span>
-                <span class="glyphicon glyphicon-tag"      @click="control.sort   = 'price' "></span>
+                <span class="glyphicon glyphicon-yen"      @click="control.sort   = 'price' "></span>
                 <input type="text" v-model="control.filter" placeholder="過濾器">
             </div>
         </nav>
@@ -67,29 +67,32 @@
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.js"></script>
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@3.3.5/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script>
 
         $.getJSON("./show.min.json",function(json){
 
-            window.app = new Vue({
-                el : "#app",
-                data : {
-                    activities : json ,
-                    favorite : {},
-                    control : {
-                        filter : "" ,
-                        sort : "" ,
-                        tab : "all" ,
+            Vue.createApp({
+                data () {
+                    return {
+                        activities : json ,
+                        favorite : {},
+                        control : {
+                            filter : "" ,
+                            sort : "" ,
+                            tab : "all" ,
+                        }
                     }
                 },
                 methods : {
+
                     toggle_like : function (s){
 
-                        this.$set(this.favorite, s.uid , this.favorite[s.uid] ?  false : true )
+                        this.favorite[s.uid] = this.favorite[s.uid] ? false : true 
+
+                        //this.$set(this.favorite, s.uid , this.favorite[s.uid] ?  false : true )
                         console.log(this.favorite)
                     }
                 },
@@ -144,7 +147,7 @@
                         return current
                     }
                 }
-            })
+            }).mount('#app')
         })
     </script>
 
