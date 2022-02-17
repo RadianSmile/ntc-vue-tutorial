@@ -1,9 +1,6 @@
 $gray-bg : rgb(238, 238, 238) ;
-
 $gray-shadow : rgb(198, 198, 198) ;
-
 $gray : rgb(218, 218, 218)  ;
-
 $green : rgb(132, 175, 27) ;
 
 
@@ -42,7 +39,6 @@ html * {
   }
 
   &:hover {
-
     &:before {
         -webkit-transform: translateX(0);
         transform: translateX(0);
