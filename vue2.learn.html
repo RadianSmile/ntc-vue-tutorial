@@ -1,0 +1,40 @@
+<head>
+  <meta charset="utf-8" />
+</head>
+
+<div id="app" data-name="">
+  <!-- v-model -->
+  <p>{{message}}</p>
+  <input v-model="message" />
+  <br />
+
+  <!-- v-on -->
+  <button v-on:click="counterPlus($event , 1)">+1</button>
+  <button v-on:click="counterPlus">+2</button>
+  <button id="btn3">+3</button>
+  <p>{{counter}}</p>
+  <br />
+
+  Hi, {{ fullName}}
+  <a v-bind:title="titleTxt" href="#"> 超連結</a>
+  <br />
+  <img
+    v-if="imgSrc"
+    :src="imgSrc"
+    :title="titleTxt"
+    :alt="titleTxt"
+    width="50"
+    height="50"
+  />
+
+  <p>用戶名稱:評論</p>
+
+  <!-- 幫我把下面程式碼改成上面的格式 -->
+  <p v-for=" commentTxt in commentTxtArr ">{{commentTxt}}</p>
+  <p v-for=" commentObject in commentObjectArr ">{{commentObject}}</p>
+  <p>jay:好讚的文章</p>
+  <p>ray:酷的文章</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+<script src="vue2.learn.js"></script>
